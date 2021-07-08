@@ -17,8 +17,8 @@ module.exports = (on, config) => {
 }
 
 // In cypress/plugins/index.js
-// let percyHealthCheck = require('@percy/cypress/task')
+let percyHealthCheck = require('@percy/cypress/task')
 
-// module.exports = (on, config) => {
-//   on("task", percyHealthCheck);
-// };
+module.exports = (on, config) => {
+  on("task", percyHealthCheck);
+};

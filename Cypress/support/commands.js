@@ -7,7 +7,7 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//import '@percy/cypress';
+import '@percy/cypress';
 
 Cypress.Commands.add('login', (baseURL) => {
     cy.fixture('urls').then((urls) => {

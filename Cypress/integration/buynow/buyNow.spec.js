@@ -52,7 +52,7 @@ context('BuyNow Happy Path', () => {
                 .should('be.visible')
                 .clear()
                 .type('Honda Accord',{ delay: 500 }).should('have.value', 'Honda Accord');
-        
+                cy.percySnapshot('sample');
             cy.get('#search-btn').click({ force: true }).wait(2000).url().should('include', 'cars-for-sale');
         });
     
