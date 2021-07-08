@@ -81,7 +81,8 @@ context('BuyNow Happy Path', () => {
             .click()
             .then(() => {
                 cy.url().should('include', vin);
-            });        
+            });   
+            cy.percySnapshot('percytest');     
         });
     
 //         it('should click start purchase online CTA and navigate to Buy Now', () => {
