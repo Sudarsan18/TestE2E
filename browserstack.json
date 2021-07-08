@@ -15,7 +15,12 @@
         "project_name": "My sandbox project",
         "build_name": "Build no. 1",
         "parallels": "5",
-		"specs": ["cypress/integration/buynow/buyNow.spec.js"]
+		    "specs": ["cypress/integration/buynow/buyNow.spec.js"],
+        "npm_dependencies": {
+          "@percy/cli": "^1.0.0-beta.58",
+          "@percy/cypress": "^2.3.4",
+          "cypress": "^6.2.1"
+        }
       },
     "connection_settings": {
         "local": false,
