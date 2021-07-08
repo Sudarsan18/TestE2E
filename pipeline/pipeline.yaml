@@ -1,0 +1,59 @@
+name: '$(Year:yy).$(Month).$(DayOfMonth)-INT$(rev:.r)'
+
+resources:
+  repositories:
+  - repository: devopspipeline
+    type: git
+    name: DevOps.Pipelines
+    ref: 'refs/heads/master'
+  
+trigger: 
+- master
+
+variables:
+  ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
+    tag: PR
+  ${{ if contains(variables['Build.SourceBranchName'], 'release-r') }}:
+    tag: RC
+  ${{ if and(not(contains(variables['Build.SourceBranchName'], 'release-r')), ne(variables['Build.Reason'], 'PullRequest')) }}:
+    tag: INT
+
+stages:
+- template: digital/angular_node.yaml@devopspipeline
+  parameters:
+    #base settings
+    pool: 'Digital'
+    nodeVersion: '10.x'
+    angularRoot: 'HealthCheck'
+    releaseTag: '$(tag)'
+    teamName: 'Avengers'
+    #for test results and code coverage
+    testTask: ''
+    #for build and release
+    buildTask: 'build:app'
+    releaseTask: ''
+    releaseVersion: '$(Build.BuildNumber)'
+    releaseFolder: 'HealthCheck/dist/HealthCheck/'
+    #for nuget package
+    packageId: ''
+    packagePath: ''
+
+- template: digital/CredScan.yaml@devopspipeline
+  parameters:
+    #base settings
+      pool: 'Digital'
+    #Run Credential Scanner
+      toolMajorVersion: 'V2'
+      outputFormat: 'csv'
+    #Create Security Analysis Report
+      AllTools_Create: 'false'
+      BinSkim: 'false'
+      CredScan: 'true'
+      RoslynAnalyzers: 'false'
+      TSLint: 'false'
+      ToolLogsNotFoundAction_Create: 'Standard'
+    #Publish Security Analysis Logs
+      ArtifactName: 'CodeAnalysisLogs'
+      ArtifactType: 'Container'
+      AllTools_Publish: 'true'
+      ToolLogsNotFoundAction_Publish: 'Standard'          

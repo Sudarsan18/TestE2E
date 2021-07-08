@@ -1,0 +1,14 @@
+{
+  "name": "dt.an.e2e",
+  "version": "0.1.0",
+  "scripts": {
+    "cypress": "cypress open",
+    "percy": "set NODE_EXTRA_CA_CERTS=.\\master.cer && set PERCY_TOKEN=104b078b2f2f87dff861d1cd7967cced75b9297603938bb3b7789dbef9a2caf7 && percy exec -- cypress run --headed --spec \"cypress/integration/buynow/buyNow.spec.js\""
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.58",
+    "@percy/cypress": "^2.3.4",
+    "cypress": "^6.2.1"
+  },
+  "dependencies": {}
+}

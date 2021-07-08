@@ -1,0 +1,25 @@
+{
+  "viewportWidth": 1920,
+  "viewportHeight": 969,
+  "pageLoadTimeout": 300000,
+  "requestTimeout": 30000,
+  "responseTimeout": 30000,
+  "defaultCommandTimeout": 30000,
+  "videoCompression": false,
+  "userAgent": "ANDTCypressDEV",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/my-test-output-[hash].xml",
+    "toConsole": true
+  },
+  "env":{
+    "instoreHost": null,
+    "ancomHost": null,
+    "HealthCheckCategories": "[[\"leadformsCompass\"],[\"leadformsCompass\"]]",
+    "HealthCheckTimeout": 300000
+  },
+  "blockHosts": [
+    "*.dynamicyield.com"
+  ],
+  "retries": 1
+}

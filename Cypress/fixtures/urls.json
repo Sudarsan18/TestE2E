@@ -1,0 +1,6 @@
+{
+  "dev": "http://localhost:4200",
+  "local": "http://instorelocal.autonation.com",
+  "dit2": "https://instore5.qaautonation.com",
+  "qa2" : "https://instore2.qaautonation.com"
+}
