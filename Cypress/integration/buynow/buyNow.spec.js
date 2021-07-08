@@ -62,7 +62,7 @@ context('BuyNow Happy Path', () => {
             if(Cypress.$("div.modal").length > 0 && Cypress.$("div.modal").is(':visible') ){
                 cy.get("i#btnUpdateZipCodeClose-close-x").should('be.visible').click();
             }
-
+            cy.percySnapshot('test');
             cy.wait(2000).get("#input-stocktype-new-label").click({force: true}).wait(5000);
             cy.wait(2000).get("label[for='finance']").click({force: true}).wait(5000);
             // cy.wait(2000).get("span#panelLabel-fueltype").click({ force: true }).wait(2000);
